@@ -12,32 +12,14 @@
  * }
  */
 public class Solution {
+    
     public TreeNode InsertIntoBST(TreeNode root, int val) {
-                if(root is null) 
+        if(root is null) 
         return new TreeNode(val);
-        TreeNode head=root;
-        while(head is not null){
-        if(head.val<val){
-            if(head.right is null)
-            {
-                head.right = new TreeNode(val);
-                return root;
-            }
-            else
-            head=head.right;
-        }
-        else if(head.val>val){
-            if(head.left is null)
-            {
-                head.left = new TreeNode(val);
-                return root;
-            }
-            else
-            head=head.left;
-        }
-        else return root;
-        
-        }
+        if(root.val<val) 
+        root.right=InsertIntoBST(root.right,val);
+        else 
+        root.left=InsertIntoBST(root.left,val);
 
         return root;
     }
